@@ -1,7 +1,8 @@
 class Photo {
-  constructor(url, user) {
-    this.url = url;
-    this.user = user;
+  constructor(filename, userId, idCounter) {
+    this.id = idCounter;
+    this.filename = filename;
+    this.userId = userId;
     this.tags = [];
     this.comments = [];
   }
