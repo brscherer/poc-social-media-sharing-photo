@@ -1,7 +1,6 @@
 import { useEffect, useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
 import './App.css'
+import Post from './components/Post'
 
 function App() {
   const [photos, setPhotos] = useState([])
@@ -23,7 +22,7 @@ function App() {
           <p>No one posted photos yet</p>
         ) : (
           <div>
-            {photos.map(p => <p>{p.filename}</p>)}
+            {photos.map(p => <Post photo={p} />)}
           </div>
         )
       }
