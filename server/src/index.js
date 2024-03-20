@@ -2,6 +2,7 @@ const express = require('express');
 const multer = require('multer');
 const path = require("node:path");
 const bodyParser = require('body-parser');
+const cors = require('cors');
 
 const { Database } = require('./models');
 
@@ -27,6 +28,7 @@ const storage = multer.diskStorage({
 const upload = multer({ storage: storage });
 
 app.use(bodyParser.json());
+app.use(cors());
 
 const initialUsers = [
   { id: 1, name: 'Alice' },
@@ -39,6 +41,11 @@ db.initializeWithUsers(initialUsers);
 app.get('/users', (req, res) => {
   res.status(200).json(db.users);
 });
+
+app.get('/timeline', (req, res) => {
+  res.status(200).json(db.photos);
+});
+
 
 app.post('/users', (req, res) => {
   const { name } = req.body;
